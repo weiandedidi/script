@@ -22,8 +22,8 @@ headers = {'User-agent': 'Mozilla/5.0',
            'language': 'zh-CN,zh;q=0.9,en;q=0.8',
            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'}
 # 超时时间
-# timeout = 1
-timeout = 0.001
+timeout = 1
+# timeout = 0.001
 
 result = requests.post(url, data, headers=headers, timeout=timeout)
 print result.cookies
