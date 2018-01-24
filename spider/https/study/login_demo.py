@@ -26,16 +26,12 @@ def login():
     data = {'userId': 'weiandedidi@163.com', 'password': 'maqidi4915338'}
     postData = urllib.urlencode(data)
     # 设置header
-    # user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36'
-    # connection = 'keep-alive'
-    # language = 'zh-CN,zh;q=0.9,en;q=0.8'
-    # accept = 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
-    # 变量方式放入数据，可能由于地址问题报错list不能callable
-    # headerInfo = [('Accept', accept), ('Accept-Language', language), ('Connection', connection),
-    #               ('User-Agent', user_agent)]
-    opener.addheaders = [('User-agent', 'Mozilla/5.0'), ('Accept-Language', 'zh-CN,zh;q=0.9,en;q=0.8'),
-                         ('Connection', 'keep-alive'), ('language', 'zh-CN,zh;q=0.9,en;q=0.8'), ('Accept',
-                                                                                                 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8')]
+    opener.addheaders = [('User-agent', 'Mozilla/5.0'),
+                         ('Accept-Language', 'zh-CN,zh;q=0.9,en;q=0.8'),
+                         ('Connection', 'keep-alive'),
+                         ('language', 'zh-CN,zh;q=0.9,en;q=0.8'),
+                         ('Accept',
+                          'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8')]
     # 发数据
     result = opener.open(url, postData)
     cookie.save(ignore_discard=True, ignore_expires=True)
