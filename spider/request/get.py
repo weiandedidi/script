@@ -1,6 +1,6 @@
 #!/usr/bin/env python  
 # encoding: utf-8  
-""" 
+"""
 @version: v1.0 
 @author: qidima 
 @license: Apache Licence  
@@ -13,12 +13,10 @@
 # 使用get请求
 import requests
 
-data = {'key': 'value'}
-header = {
-    'User_Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
-    "Accept": "text/html,application/xhtml+xml,application/xml; q=0.9,image/webp,*/*;q=0.8",
-    "Connection": "keep-alive"
-}
-requests
-result = requests.get("https://www.sohu.com", data)
-print result.text
+r = requests.get(url='http://www.itwhy.org')  # 最基本的GET请求
+headers = {'User-agent': 'Mozilla/5.0', 'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8', 'Connection': 'keep-alive',
+           'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'}
+r = requests.get(url='http://dict.baidu.com/s', params={'wd': 'python'}, headers=headers)  # 带参数的GET请求
+print(r.status_code)  # 获取返回状态
+print(r.url)
+print(r.text)  # 打印解码后的返回数据
