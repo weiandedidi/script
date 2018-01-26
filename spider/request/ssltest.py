@@ -14,7 +14,9 @@
 import requests
 # 认证
 # r = requests.get('https://kyfw.12306.cn/otn/', verify=True)
-# 不认证
-r = requests.get('https://www.sina.com.cn/', verify=False)
+# 不安全的证书认证 exceptions.SSLError: HTTPSConnectionPool(host='2sc.sohu.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLError(1, u'[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:661)'),))
+r = requests.get('https://www.163.com/', verify=True)
+# 不安全的证书不认证 ok通过
+r = requests.get('https://www.163.com/', verify=False)
 # r = requests.get('https://github.com', verify=False)
 print r.text
