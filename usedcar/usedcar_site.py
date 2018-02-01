@@ -38,14 +38,15 @@ class seleniumTest(unittest.TestCase):
         # 驱动
         driver = webdriver.PhantomJS(desired_capabilities=dscp)
         dealerId = 263568
-        url = 'https://app.che168.com/czy/web/v152/store/index.html?dealerId' + str(dealerId)
+        url = 'https://app.che168.com/czy/web/v152/store/index.html?dealerId=' + str(dealerId)
         # https没有证书的检查
         # 点击元素，获取数据
         driver.get(url)
         # ele = driver.find_element_by_css_selector('span[data-index="4"]')
+        ele = driver.find_element_by_id('template_store')
         # 解析html
         soup = BeautifulSoup(driver.page_source, 'lxml')
-        print driver.page_source
+        # print driver.page_source
 
     def tearDown(self):
         print 'down'
