@@ -15,7 +15,10 @@
 import unittest
 from selenium import webdriver
 from bs4 import BeautifulSoup
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver import DesiredCapabilities
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.common.by import By
 
 
 class seleniumTest(unittest.TestCase):
@@ -23,8 +26,8 @@ class seleniumTest(unittest.TestCase):
         pass
 
     def testEle(self):
-        # phantomjs_path = 'D:\Program Files\phantomjs\bin\phantomjs.exe'
-        phantomjs_path = '/usr/local/bin/phantomjs'
+        phantomjs_path = 'D:\Program Files\phantomjs\bin\phantomjs.exe'
+        # phantomjs_path = '/usr/local/bin/phantomjs'
         # 伪装header
         dscp = DesiredCapabilities.PHANTOMJS.copy()
         dscp[
@@ -44,11 +47,19 @@ class seleniumTest(unittest.TestCase):
         driver.get(url)
         # ele = driver.find_element_by_css_selector('span[data-index="4"]')
         # 解析html
-        soup = BeautifulSoup(driver.page_source, 'lxml')
-        print driver.page_source
+        # 显示等待
+        try:
+            script = driver.find_element_by_id('template_store')
+            driver.execute_script(script=script)
+            print driver.find_element_by_css_selector('.info-num-left')
+            soup = BeautifulSoup(driver.page_source, 'lxml')
+            # print driver.page_source
+        finally:
+            driver.quit()
 
-    def tearDown(self):
-        print 'down'
+
+def tearDown(self):
+    print 'down'
 
 
 if __name__ == "__main__":
