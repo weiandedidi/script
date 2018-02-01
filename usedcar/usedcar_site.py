@@ -13,8 +13,9 @@
 # 爬取二手车之家wap网站
 # 引用 selenium 、bs4 、phantomjs
 import unittest
+
+from bs4 import BeautifulSoup, Comment
 from selenium import webdriver
-from bs4 import BeautifulSoup
 from selenium.webdriver import DesiredCapabilities
 
 
@@ -23,8 +24,8 @@ class seleniumTest(unittest.TestCase):
         pass
 
     def testEle(self):
-        # phantomjs_path = 'D:\Program Files\phantomjs\bin\phantomjs.exe'
-        phantomjs_path = '/usr/local/bin/phantomjs'
+        phantomjs_path = 'D:\Program Files\phantomjs\bin\phantomjs.exe'
+        # phantomjs_path = '/usr/local/bin/phantomjs'
         # 伪装header
         dscp = DesiredCapabilities.PHANTOMJS.copy()
         dscp[
@@ -40,16 +41,44 @@ class seleniumTest(unittest.TestCase):
         dealerId = 263568
         url = 'https://app.che168.com/czy/web/v152/store/index.html?dealerId=' + str(dealerId)
         # https没有证书的检查
-        # 点击元素，获取数据
         driver.get(url)
+        # 点击元素，获取数据
         # ele = driver.find_element_by_css_selector('span[data-index="4"]')
         ele = driver.find_element_by_id('template_store')
         # 解析html
         soup = BeautifulSoup(driver.page_source, 'lxml')
         # print driver.page_source
+        # 显示等待
+        driver.implicitly_wait(10)
+        try:
+            # print driver.page_source
+            soup = BeautifulSoup(driver.page_source, 'lxml')
+            tags = soup.find_all('p', class_='info-num-line1')
+            # 车源已售，在售
+            # for tag in tags:
+            #     print tag.text
+            # 商铺名
+            # name_parent = soup.find_all('div', class_='company-list')
+            # temps = soup.find('div', class_='company-list')
+            # name = temps.find('a').text
+            # print name
+            # 地址
+            ul_address = soup.find('ul', {'class': 'list-base gs-info'})
+            # 可遍历字符串
+            comments = ul_address.find_all(text=lambda text: isinstance(text, Comment))
+            tag_addr = BeautifulSoup(comments[0], 'lxml')
+            div_addr = tag_addr.find('div', {'class': 'right-text fn-right wid100 mt20'})
+            address = div_addr.find('span')
+            print address.string
 
-    def tearDown(self):
-        print 'down'
+
+
+        finally:
+            driver.quit()
+
+
+def tearDown(self):
+    print 'down'
 
 
 if __name__ == "__main__":
