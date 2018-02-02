@@ -38,12 +38,16 @@ class seleniumTest(unittest.TestCase):
 
         # 驱动
         driver = webdriver.PhantomJS(desired_capabilities=dscp)
-        dealerId = 128168
+        dealerId = 263568
         url = 'https://app.che168.com/czy/web/v152/store/index.html?dealerId=' + str(dealerId)
         # https没有证书的检查
         driver.get(url)
         # 点击元素，获取数据
         # ele = driver.find_element_by_css_selector('span[data-index="4"]')
+        ele = driver.find_element_by_id('template_store')
+        # 解析html
+        soup = BeautifulSoup(driver.page_source, 'lxml')
+        # print driver.page_source
         # 显示等待
         driver.implicitly_wait(10)
         try:
