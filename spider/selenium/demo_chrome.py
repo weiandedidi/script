@@ -15,6 +15,6 @@
 from selenium import webdriver
 
 # 加载chrome浏览器驱动 webdriver.Chrome(chromedriver path)
-# browser = webdriver.Chrome('D:\Program Files\chromedriver\chromedriver.exe')
-browser = webdriver.Chrome('/Users/qidima/Work/software/chromedriver')
+browser = webdriver.Chrome('D:\Program Files\chromedriver\chromedriver.exe')
+# browser = webdriver.Chrome('/Users/qidima/Work/software/chromedriver')
 browser.get('http://www.baidu.com/')
