@@ -1,3 +1,5 @@
 .idea/
 venv/
+sedcar/ghostdriver.log
+usedcar/dev/ghostdriver.log
 

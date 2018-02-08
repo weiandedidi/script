@@ -1,4 +1,4 @@
-#!/usr/bin/env python  
+#!/usr/bin/python
 # encoding: utf-8  
 """ 
 @version: v1.0 
@@ -44,10 +44,8 @@ class seleniumTest(unittest.TestCase):
         driver.get(url)
         # 点击元素，获取数据
         # ele = driver.find_element_by_css_selector('span[data-index="4"]')
-        ele = driver.find_element_by_id('template_store')
+        # ele = driver.find_element_by_id('template_store')
         # 解析html
-        soup = BeautifulSoup(driver.page_source, 'lxml')
-        # print driver.page_source
         # 显示等待
         driver.implicitly_wait(10)
         try:
@@ -57,6 +55,10 @@ class seleniumTest(unittest.TestCase):
             # 车源已售，在售
             # for tag in tags:
             #     print tag.text
+            sold = tags[0].text
+            sell = tags[1].text
+            print sold
+            print sell
             # 商铺名
             # name_parent = soup.find_all('div', class_='company-list')
             # temps = soup.find('div', class_='company-list')
@@ -70,6 +72,9 @@ class seleniumTest(unittest.TestCase):
             div_addr = tag_addr.find('div', {'class': 'right-text fn-right wid100 mt20'})
             address = div_addr.find('span')
             print address.string
+
+            div_phone = soup.find(id='phone1')
+            print div_phone.text
 
 
 
