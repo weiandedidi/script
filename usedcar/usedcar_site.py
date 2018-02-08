@@ -24,8 +24,8 @@ class seleniumTest(unittest.TestCase):
         pass
 
     def testEle(self):
-        phantomjs_path = 'D:\Program Files\phantomjs\bin\phantomjs.exe'
-        # phantomjs_path = '/usr/local/bin/phantomjs'
+        # phantomjs_path = 'D:\Program Files\phantomjs\bin\phantomjs.exe'
+        phantomjs_path = '/usr/local/bin/phantomjs'
         # 伪装header
         dscp = DesiredCapabilities.PHANTOMJS.copy()
         dscp[
