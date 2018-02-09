@@ -20,3 +20,5 @@ r = requests.get(url='http://dict.baidu.com/s', params={'wd': 'python'}, headers
 print(r.status_code)  # 获取返回状态
 print(r.url)
 print(r.text)  # 打印解码后的返回数据
+
+
