@@ -13,10 +13,8 @@
 
 # 学习信号量，信号量为0表示资源繁忙，>0表示空闲
 # 定义生产者和消费者
-from Queue import Queue
 
-from multiprocessing import Semaphore, Lock, Process
-
+from multiprocessing import Process, Semaphore, Lock, Queue
 import time
 
 buffer = Queue(10)
@@ -26,6 +24,7 @@ lock = Lock()
 
 
 class Consumer(Process):
+
     def run(self):
         global buffer, empty, full, lock
         while True:
