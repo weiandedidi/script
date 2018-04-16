@@ -10,6 +10,7 @@
 @file: beidakouqiang.py 
 @time: 2018/2/28 16:44 
 """
+from time import sleep
 
 from selenium import webdriver
 from selenium.webdriver import DesiredCapabilities
@@ -41,6 +42,7 @@ def parse_wap(url):
         element = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.CLASS_NAME, 'rbk-navigate-right'))
         )
+        sleep(3)
         html = driver.page_source
     finally:
         driver.close()
