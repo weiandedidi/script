@@ -3,7 +3,7 @@
 import xlrd
 import pymysql
 
-# 打开Excel文件 win下注意\改成/
+
 workbook = xlrd.open_workbook('C:/Users/qidima/Desktop/model_data.xlsx')
 
 # Connect to the database
