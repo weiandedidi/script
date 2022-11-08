@@ -22,6 +22,13 @@ from PIL import Image, ImageGrab
 import numpy as np
 import requests
 
+'''
+1. 图片粘贴到剪切板中。
+2. 图片转码为base64  并且去掉头部的 data:image/jpg;base64,
+3. 使用存储百度的请求token，30天刷新一次
+4. 请求百度的通用图像识别接口
+'''
+
 
 class ImageType(Enum):
     """
